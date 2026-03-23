@@ -23,11 +23,21 @@
         .page { padding: 60px 20px; max-width: 1400px; margin: 0 auto; }
         
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-        .gallery-item { aspect-ratio: 1; overflow: hidden; cursor: pointer; border-radius: 8px; }
+        .gallery-item { aspect-ratio: 1; overflow: hidden; cursor: pointer; border-radius: 8px; position: relative; }
         .gallery-item:hover { transform: scale(1.05); transition: 0.3s; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #fff; padding: 20px; opacity: 0; transition: 0.3s; }
+        .gallery-item:hover .overlay { opacity: 1; }
         
         .back-btn { display: inline-block; padding: 10px 20px; background: #000; color: #fff; border: none; cursor: pointer; margin-bottom: 30px; }
+        
+        .product-detail { display: none; }
+        .product-detail.active { display: block; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .detail-img img { width: 100%; border-radius: 10px; }
+        .detail-info h2 { font-size: 1.8rem; margin-bottom: 15px; }
+        .detail-info .price { font-size: 1.5rem; font-weight: bold; color: #e74c3c; margin: 20px 0; }
+        .detail-info p { color: #666; margin-bottom: 15px; }
         
         .contact { background: #f9f9f9; padding: 60px 20px; text-align: center; }
         .contact h2 { margin-bottom: 30px; font-weight: 300; }
@@ -39,84 +49,54 @@
         
         footer { background: #fff; color: #999; text-align: center; padding: 20px; border-top: 1px solid #eee; }
         
-        @media (max-width: 768px) { .menu { display: none; } }
+        @media (max-width: 768px) { 
+            .menu { display: none; }
+            .detail-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="logo">JIAYU'S VISION</div>
+        <div class="logo" onclick="showHome()">JIAYU'S VISION</div>
         <nav class="menu">
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
+            <a href="#" onclick="showHome()">Home</a>
+            <a href="#gallery" onclick="showHome()">Products</a>
+            <a href="#contact" onclick="showContact()">Contact</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="hero">
         <h1>FIND YOUR PERFECT MATCH</h1>
         <p>Premium Quality • Fast Global Shipping • Custom OEM/ODM</p>
+        <button class="btn" onclick="showHome()">View Products</button>
     </section>
 
-    <section class="page" id="gallery">
-        <h2 style="margin-bottom:30px;font-weight:300;">Our Products</h2>
-        <div class="gallery">
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(1).jpg" alt="Product 1"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(2).jpg" alt="Product 2"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(3).jpg" alt="Product 3"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(4).jpg" alt="Product 4"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(5).jpg" alt="Product 5"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(6).jpg" alt="Product 6"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(7).jpg" alt="Product 7"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(8).jpg" alt="Product 8"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(9).jpg" alt="Product 9"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(10).jpg" alt="Product 10"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(11).jpg" alt="Product 11"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(12).jpg" alt="Product 12"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(13).jpg" alt="Product 13"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(14).jpg" alt="Product 14"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(15).jpg" alt="Product 15"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(16).jpg" alt="Product 16"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(17).jpg" alt="Product 17"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(18).jpg" alt="Product 18"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(19).jpg" alt="Product 19"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(20).jpg" alt="Product 20"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(21).jpg" alt="Product 21"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(22).jpg" alt="Product 22"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(23).jpg" alt="Product 23"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(24).jpg" alt="Product 24"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(25).jpg" alt="Product 25"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(26).jpg" alt="Product 26"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(27).jpg" alt="Product 27"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(28).jpg" alt="Product 28"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(29).jpg" alt="Product 29"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(30).jpg" alt="Product 30"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(31).jpg" alt="Product 31"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(32).jpg" alt="Product 32"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(33).jpg" alt="Product 33"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(34).jpg" alt="Product 34"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(35).jpg" alt="Product 35"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(36).jpg" alt="Product 36"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(37).jpg" alt="Product 37"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(38).jpg" alt="Product 38"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(39).jpg" alt="Product 39"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(40).jpg" alt="Product 40"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(41).jpg" alt="Product 41"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(42).jpg" alt="Product 42"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(43).jpg" alt="Product 43"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(44).jpg" alt="Product 44"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(45).jpg" alt="Product 45"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(46).jpg" alt="Product 46"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(47).jpg" alt="Product 47"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(48).jpg" alt="Product 48"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(49).jpg" alt="Product 49"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(50).jpg" alt="Product 50"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small%20(51).jpg" alt="Product 51"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/small.jpg" alt="Product 52"></div>
-            <div class="gallery-item"><img src="https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/medium.jpg" alt="Product 53"></div>
+    <!-- Gallery Page -->
+    <section class="page" id="gallery-page">
+        <h2 style="margin-bottom:30px;font-weight:300;">Our Products - Click to View Details</h2>
+        <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- Product Detail Page -->
+    <section class="page product-detail" id="detail-page">
+        <button class="back-btn" onclick="showHome()">← Back to Products</button>
+        <div class="detail-grid">
+            <div class="detail-img">
+                <img id="detail-img" src="" alt="">
+            </div>
+            <div class="detail-info">
+                <h2 id="detail-title">Product Name</h2>
+                <div class="price" id="detail-price">$0</div>
+                <p id="detail-desc">Description</p>
+                <p><strong>MOQ:</strong> <span id="detail-moq">100 pairs</span></p>
+                <p><strong>Shipping:</strong> <span id="detail-shipping">15-25 days</span></p>
+                <button class="btn" onclick="showContact()">Get Quote</button>
+            </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="contact" id="contact-page">
         <h2>Contact Us</h2>
         <div class="contact-info">
             <p>📧 jiaqiangtian728@gmail.com | 📱 @M606058</p>
@@ -135,6 +115,71 @@
     </footer>
 
     <script>
+        const products = [
+            { id: 1, name: "Sports Shoes Pro", price: "$12/pair", desc: "Lightweight running shoes with air cushion. Perfect for marathons and daily training.", moq: "100 pairs", shipping: "15-25 days", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600" },
+            { id: 2, name: "Casual Sneakers", price: "$8/pair", desc: "Classic design sneakers. Comfortable for all-day wear.", moq: "100 pairs", shipping: "15-25 days", img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600" },
+            { id: 3, name: "Formal Oxford", price: "$18/pair", desc: "Premium leather oxford shoes. Elegant for business.", moq: "50 pairs", shipping: "20-30 days", img: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=600" },
+            { id: 4, name: "Women's Flats", price: "$7/pair", desc: "Elegant flats for office. Multiple colors available.", moq: "100 pairs", shipping: "15-25 days", img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600" },
+            { id: 5, name: "Running Elite", price: "$15/pair", desc: "Professional running shoes. Advanced cushioning.", moq: "100 pairs", shipping: "15-25 days", img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600" },
+            { id: 6, name: "Basketball High-Top", price: "$16/pair", desc: "High-top basketball shoes with ankle support.", moq: "50 pairs", shipping: "20-30 days", img: "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=600" },
+            { id: 7, name: "Leather Loafers", price: "$14/pair", desc: "Genuine leather loafers. Comfortable slip-on.", moq: "50 pairs", shipping: "20-30 days", img: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=600" },
+            { id: 8, name: "Training Shoes", price: "$10/pair", desc: "Versatile training shoes for gym and fitness.", moq: "100 pairs", shipping: "15-25 days", img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600" },
+            { id: 9, name: "Tennis Court", price: "$11/pair", desc: "Professional tennis shoes with non-marking sole.", moq: "50 pairs", shipping: "15-25 days", img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600" },
+            { id: 10, name: "Fashion Boots", price: "$18/pair", desc: "Trendy boots for casual outings.", moq: "50 pairs", shipping: "20-30 days", img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600" },
+            { id: 11, name: "Slides Sandals", price: "$6/pair", desc: "Comfortable slides for summer.", moq: "200 pairs", shipping: "10-20 days", img: "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600" },
+            { id: 12, name: "Hiking Trail", price: "$16/pair", desc: "Waterproof hiking shoes. Rugged outsole.", moq: "50 pairs", shipping: "20-30 days", img: "https://images.unsplash.com/photo-1520219306100-ec4afeeefe58?w=600" }
+        ];
+
+        function showHome() {
+            document.getElementById('hero').style.display = 'block';
+            document.getElementById('gallery-page').style.display = 'block';
+            document.getElementById('detail-page').classList.remove('active');
+            document.getElementById('contact-page').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function showContact() {
+            document.getElementById('hero').style.display = 'none';
+            document.getElementById('gallery-page').style.display = 'none';
+            document.getElementById('detail-page').classList.remove('active');
+            document.getElementById('contact-page').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showProduct(id) {
+            const p = products.find(x => x.id === id);
+            if (!p) return;
+            
+            document.getElementById('hero').style.display = 'none';
+            document.getElementById('gallery-page').style.display = 'none';
+            document.getElementById('detail-page').classList.add('active');
+            document.getElementById('contact-page').style.display = 'none';
+            
+            document.getElementById('detail-img').src = p.img;
+            document.getElementById('detail-title').innerText = p.name;
+            document.getElementById('detail-price').innerText = p.price;
+            document.getElementById('detail-desc').innerText = p.desc;
+            document.getElementById('detail-moq').innerText = p.moq;
+            document.getElementById('detail-shipping').innerText = p.shipping;
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Render gallery
+        const gallery = document.getElementById('gallery');
+        products.forEach(p => {
+            gallery.innerHTML += `
+                <div class="gallery-item" onclick="showProduct(${p.id})">
+                    <img src="${p.img}" alt="${p.name}">
+                    <div class="overlay">
+                        <div>${p.name}</div>
+                        <div style="font-size:0.9rem;">${p.price}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Contact form
         const TELEGRAM_BOT_TOKEN = '8620401253:AAExCOqmSksFLariIS_rhWG05Jnv9advt-M';
         const TELEGRAM_CHAT_ID = '7753038386';
         (function() { emailjs.init("kvEuwT7TlqEEW3-lg"); })();
