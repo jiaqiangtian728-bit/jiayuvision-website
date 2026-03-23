@@ -78,7 +78,7 @@
 
     <!-- Home Page -->
     <section class="hero" onclick="showCategories()">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600" alt="Fashion" class="hero-img">
+        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=1600" alt="Fashion" class="hero-img">
         <div class="hero-overlay">
             <h1>FIND YOUR PERFECT MATCH</h1>
             <p>Premium Quality • Fast Global Shipping • Custom OEM/ODM</p>
@@ -92,7 +92,7 @@
         <h2 style="margin-bottom:30px;font-weight:300;">Our Collections</h2>
         <div class="categories">
             <div class="category-card" onclick="showGallery('ASICS')">
-                <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=600" alt="ASICS">
+                <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600" alt="ASICS">
                 <div class="category-overlay">
                     <h3>ASICS Collection</h3>
                     <p>Sports & Running Shoes - 52 Styles</p>
@@ -140,7 +140,6 @@
         let images = [];
         let currentIndex = 0;
         
-        // Generate image URLs
         for (let i = 1; i <= 51; i++) {
             images.push(imageBase + "small%20(" + i + ").jpg");
         }
@@ -207,13 +206,11 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-        // Render gallery
         const gallery = document.getElementById('gallery');
         images.forEach((img, index) => {
             gallery.innerHTML += `<div class="gallery-item" onclick="openLightbox(${index})"><img src="${img}" alt="Product ${index+1}"></div>`;
         });
 
-        // Contact form
         const TELEGRAM_BOT_TOKEN = '8620401253:AAExCOqmSksFLariIS_rhWG05Jnv9advt-M';
         const TELEGRAM_CHAT_ID = '7753038386';
         (function() { emailjs.init("kvEuwT7TlqEEW3-lg"); })();
