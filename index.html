@@ -18,13 +18,15 @@
         
         .products { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
         .products h2 { text-align: center; font-weight: 300; margin-bottom: 50px; font-size: 1.5rem; letter-spacing: 3px; text-transform: uppercase; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .product-card { text-align: center; padding: 20px; }
-        .product-card:hover { transform: translateY(-5px); transition: 0.3s; }
-        .product-icon { font-size: 4rem; margin-bottom: 20px; }
-        .product-card h3 { font-weight: 500; margin-bottom: 10px; }
-        .product-card p { color: #666; font-size: 0.9rem; }
-        .price { color: #000; font-size: 1.2rem; font-weight: 600; margin-top: 15px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { border: 1px solid #eee; transition: 0.3s; }
+        .product-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .product-img { width: 100%; height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999; font-size: 3rem; overflow: hidden; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { padding: 20px; }
+        .product-info h3 { font-weight: 500; margin-bottom: 8px; }
+        .product-info p { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+        .price { color: #000; font-size: 1.1rem; font-weight: 600; }
         
         .contact { background: #f9f9f9; padding: 80px 20px; text-align: center; }
         .contact h2 { font-weight: 300; margin-bottom: 40px; font-size: 1.5rem; letter-spacing: 3px; text-transform: uppercase; }
@@ -38,10 +40,6 @@
         .success-message { background: #4CAF50; color: white; padding: 15px; margin-top: 15px; display: none; }
         
         footer { background: #fff; color: #999; text-align: center; padding: 30px; border-top: 1px solid #eee; font-size: 0.8rem; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
     </style>
 </head>
 <body>
@@ -56,28 +54,52 @@
         <h2>Products</h2>
         <div class="product-grid">
             <div class="product-card">
-                <div class="product-icon">👟</div>
-                <h3>Sports Shoes</h3>
-                <p>Quality materials, comfortable</p>
-                <div class="price">From $8/pair</div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Sports Shoes"></div>
+                <div class="product-info">
+                    <h3>Sports Shoes</h3>
+                    <p>Quality materials, comfortable for sports</p>
+                    <div class="price">From $8/pair</div>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-icon">👞</div>
-                <h3>Casual Shoes</h3>
-                <p>Modern design, daily wear</p>
-                <div class="price">From $6/pair</div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" alt="Casual Shoes"></div>
+                <div class="product-info">
+                    <h3>Casual Shoes</h3>
+                    <p>Modern design, daily wear</p>
+                    <div class="price">From $6/pair</div>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-icon">👔</div>
-                <h3>Formal Shoes</h3>
-                <p>Classic style, business</p>
-                <div class="price">From $10/pair</div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400" alt="Formal Shoes"></div>
+                <div class="product-info">
+                    <h3>Formal Shoes</h3>
+                    <p>Classic style for business</p>
+                    <div class="price">From $10/pair</div>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-icon">🥿</div>
-                <h3>Women's Flats</h3>
-                <p>Trendy and comfortable</p>
-                <div class="price">From $5/pair</div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" alt="Women's Flats"></div>
+                <div class="product-info">
+                    <h3>Women's Flats</h3>
+                    <p>Trendy and comfortable</p>
+                    <div class="price">From $5/pair</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400" alt="Running Shoes"></div>
+                <div class="product-info">
+                    <h3>Running Shoes</h3>
+                    <p>Lightweight, breathable</p>
+                    <div class="price">From $7/pair</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" alt="Slides"></div>
+                <div class="product-info">
+                    <h3>Slides</h3>
+                    <p>Casual and comfortable</p>
+                    <div class="price">From $4/pair</div>
+                </div>
             </div>
         </div>
     </section>
