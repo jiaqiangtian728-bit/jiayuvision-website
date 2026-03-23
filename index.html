@@ -10,156 +10,266 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #fff; }
         
-        .hero { background: #000; color: #fff; padding: 100px 20px; text-align: center; }
-        .hero h1 { font-size: 2.5rem; font-weight: 300; margin-bottom: 15px; letter-spacing: 2px; }
-        .hero p { font-size: 1rem; opacity: 0.7; margin-bottom: 30px; }
-        .btn { display: inline-block; padding: 15px 40px; background: #fff; color: #000; text-decoration: none; border-radius: 0; font-weight: 600; letter-spacing: 1px; border: none; cursor: pointer; text-transform: uppercase; font-size: 0.9rem; }
-        .btn:hover { background: #f0f0f0; }
+        .header { background: #000; color: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; cursor: pointer; }
+        .menu { display: flex; gap: 30px; }
+        .menu a { color: #fff; text-decoration: none; font-size: 0.9rem; opacity: 0.7; transition: 0.3s; }
+        .menu a:hover { opacity: 1; }
         
-        .products { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .products h2 { text-align: center; font-weight: 300; margin-bottom: 50px; font-size: 1.5rem; letter-spacing: 3px; text-transform: uppercase; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-        .product-card { border: 1px solid #eee; transition: 0.3s; }
-        .product-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .product-img { width: 100%; height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999; font-size: 3rem; overflow: hidden; }
+        .hero { background: #111; color: #fff; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 2rem; font-weight: 300; letter-spacing: 3px; margin-bottom: 10px; }
+        .hero p { opacity: 0.6; margin-bottom: 20px; }
+        
+        .page { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .categories { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .category-card { background: #f9f9f9; border-radius: 10px; overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .category-img { height: 200px; background: #eee; overflow: hidden; }
+        .category-img img { width: 100%; height: 100%; object-fit: cover; }
+        .category-info { padding: 20px; }
+        .category-info h3 { margin-bottom: 8px; }
+        .category-info p { color: #666; font-size: 0.9rem; }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+        .product-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .product-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .product-img { height: 200px; background: #f5f5f5; overflow: hidden; }
         .product-img img { width: 100%; height: 100%; object-fit: cover; }
-        .product-info { padding: 20px; }
-        .product-info h3 { font-weight: 500; margin-bottom: 8px; }
-        .product-info p { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
-        .price { color: #000; font-size: 1.1rem; font-weight: 600; }
+        .product-info { padding: 15px; }
+        .product-info h4 { font-size: 0.95rem; margin-bottom: 5px; }
+        .product-info p { color: #666; font-size: 0.8rem; }
         
-        .contact { background: #f9f9f9; padding: 80px 20px; text-align: center; }
-        .contact h2 { font-weight: 300; margin-bottom: 40px; font-size: 1.5rem; letter-spacing: 3px; text-transform: uppercase; }
-        .contact-info { margin-bottom: 30px; color: #666; }
-        .contact-info a { color: #333; text-decoration: underline; }
+        .back-btn { display: inline-block; padding: 10px 20px; background: #000; color: #fff; border: none; cursor: pointer; margin-bottom: 30px; font-size: 0.9rem; }
         
-        .contact-form { max-width: 400px; margin: 0 auto; }
+        .contact { background: #f9f9f9; padding: 60px 20px; text-align: center; }
+        .contact h2 { margin-bottom: 30px; font-weight: 300; }
+        .contact-info { margin-bottom: 20px; color: #666; }
+        .contact-info a { color: #333; }
+        
         .form-group { margin-bottom: 15px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 0; font-size: 1rem; }
-        .form-group textarea { resize: vertical; }
+        .form-group input, .form-group textarea { width: 100%; max-width: 400px; padding: 12px; border: 1px solid #ddd; }
+        .btn { padding: 12px 30px; background: #000; color: #fff; border: none; cursor: pointer; }
         .success-message { background: #4CAF50; color: white; padding: 15px; margin-top: 15px; display: none; }
         
-        footer { background: #fff; color: #999; text-align: center; padding: 30px; border-top: 1px solid #eee; font-size: 0.8rem; }
+        footer { background: #fff; color: #999; text-align: center; padding: 20px; border-top: 1px solid #eee; font-size: 0.8rem; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .modal.show { display: flex; }
+        .modal-content { background: #fff; max-width: 700px; width: 100%; border-radius: 10px; overflow: hidden; }
+        .modal-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; }
+        .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
+        .modal-img { height: 350px; }
+        .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-info { padding: 30px; }
+        .modal-info h3 { margin-bottom: 10px; }
+        .modal-info .price { font-size: 1.3rem; font-weight: bold; margin: 15px 0; }
+        .modal-info p { color: #666; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .modal-grid { grid-template-columns: 1fr; }
+            .menu { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>JIAYU'S VISION</h1>
-        <p>Shoe Manufacturer from China</p>
-        <a href="#contact" class="btn">Get Quote</a>
-    </section>
+    <header class="header">
+        <div class="logo" onclick="showPage('home')">JIAYU'S VISION</div>
+        <nav class="menu">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#products" onclick="showPage('products')">Products</a>
+            <a href="#contact" onclick="showPage('contact')">Contact</a>
+        </nav>
+    </header>
 
-    <section class="products">
-        <h2>Products</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Sports Shoes"></div>
-                <div class="product-info">
-                    <h3>Sports Shoes</h3>
-                    <p>Quality materials, comfortable for sports</p>
-                    <div class="price">From $8/pair</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" alt="Casual Shoes"></div>
-                <div class="product-info">
-                    <h3>Casual Shoes</h3>
-                    <p>Modern design, daily wear</p>
-                    <div class="price">From $6/pair</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img"><img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400" alt="Formal Shoes"></div>
-                <div class="product-info">
-                    <h3>Formal Shoes</h3>
-                    <p>Classic style for business</p>
-                    <div class="price">From $10/pair</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" alt="Women's Flats"></div>
-                <div class="product-info">
-                    <h3>Women's Flats</h3>
-                    <p>Trendy and comfortable</p>
-                    <div class="price">From $5/pair</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400" alt="Running Shoes"></div>
-                <div class="product-info">
-                    <h3>Running Shoes</h3>
-                    <p>Lightweight, breathable</p>
-                    <div class="price">From $7/pair</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" alt="Slides"></div>
-                <div class="product-info">
-                    <h3>Slides</h3>
-                    <p>Casual and comfortable</p>
-                    <div class="price">From $4/pair</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2>Contact</h2>
-        <div class="contact-info">
-            <p>Email: <a href="mailto:jiaqiangtian728@gmail.com">jiaqiangtian728@gmail.com</a></p>
-            <p>Telegram: @M606058</p>
-        </div>
+    <!-- Home Page -->
+    <div id="page-home">
+        <section class="hero">
+            <h1>SHOE MANUFACTURER FROM CHINA</h1>
+            <p>Factory Direct • Competitive Prices • Global Shipping</p>
+            <button class="btn" onclick="showPage('products')">View Products</button>
+        </section>
         
-        <div class="contact-form">
+        <section class="page">
+            <div class="categories">
+                <div class="category-card" onclick="showCategory('sports')">
+                    <div class="category-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Sports Shoes"></div>
+                    <div class="category-info">
+                        <h3>Sports Shoes</h3>
+                        <p>Running, training, basketball, tennis</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showCategory('casual')">
+                    <div class="category-img"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" alt="Casual Shoes"></div>
+                    <div class="category-info">
+                        <h3>Casual Shoes</h3>
+                        <p>Daily wear, sneakers, loafers</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showCategory('formal')">
+                    <div class="category-img"><img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400" alt="Formal Shoes"></div>
+                    <div class="category-info">
+                        <h3>Formal Shoes</h3>
+                        <p>Business, dress, leather shoes</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showCategory('women')">
+                    <div class="category-img"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" alt="Women's Shoes"></div>
+                    <div class="category-info">
+                        <h3>Women's Shoes</h3>
+                        <p>Flats, heels, sandals, boots</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Products Page -->
+    <div id="page-products" style="display:none;">
+        <section class="page">
+            <button class="back-btn" onclick="showPage('home')">← Back</button>
+            <h2 id="category-title" style="margin-bottom:30px;font-weight:300;">All Products</h2>
+            <div class="products-grid" id="products-grid"></div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="page-contact" style="display:none;">
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:jiaqiangtian728@gmail.com">jiaqiangtian728@gmail.com</a></p>
+                <p>Telegram: @M606058</p>
+            </div>
             <form id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" placeholder="Message" rows="4" required></textarea>
-                </div>
+                <div class="form-group"><input type="text" id="name" placeholder="Your Name" required></div>
+                <div class="form-group"><input type="email" id="email" placeholder="Your Email" required></div>
+                <div class="form-group"><textarea id="message" placeholder="Your Message" rows="4" required></textarea></div>
                 <button type="submit" class="btn">Send</button>
             </form>
-            <div id="successMessage" class="success-message">
-                ✓ Message sent!
+            <div id="successMessage" class="success-message">✓ Message sent!</div>
+        </section>
+    </div>
+
+    <footer>© 2026 Jiayu's Vision. All rights reserved.</footer>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <div class="modal-content">
+            <div class="modal-grid">
+                <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+                <div class="modal-info">
+                    <h3 id="modalTitle">Product</h3>
+                    <p id="modalDesc">Description</p>
+                    <div class="price" id="modalPrice">$0</div>
+                    <button class="btn" onclick="showPage('contact')" style="margin-top:20px;">Get Quote</button>
+                </div>
             </div>
         </div>
-    </section>
-
-    <footer>
-        © 2026 Jiayu's Vision. All rights reserved.
-    </footer>
+    </div>
 
     <script>
-        const TELEGRAM_BOT_TOKEN = '8620401253:AAExCOqmSksFLariIS_rhWG05Jnv9advt-M';
-        const TELEGRAM_CHAT_ID = '7753038386';
+        const catalog = {
+            sports: {
+                title: "Sports Shoes",
+                products: [
+                    { name: "Running Shoes Pro", desc: "Lightweight running shoes with air cushion. Perfect for marathons and daily training.", price: "$12/pair", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" },
+                    { name: "Basketball Elite", desc: "High-top basketball shoes with ankle support. Durable outsole for indoor/outdoor.", price: "$15/pair", img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400" },
+                    { name: "Training Shoes", desc: "Versatile training shoes for gym and fitness. Breathable mesh upper.", price: "$10/pair", img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" },
+                    { name: "Tennis Court Shoes", desc: "Professional tennis shoes with non-marking sole. Great court grip.", price: "$11/pair", img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400" },
+                    { name: "Football Cleats", desc: "Soccer cleats with stud configuration. Lightweight and durable.", price: "$14/pair", img: "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=400" },
+                    { name: "Hiking Trail Shoes", desc: "Waterproof hiking shoes. Rugged outsole for all terrains.", price: "$16/pair", img: "https://images.unsplash.com/photo-1520219306100-ec4afeeefe58?w=400" }
+                ]
+            },
+            casual: {
+                title: "Casual Shoes",
+                products: [
+                    { name: "Classic Sneakers", desc: "Timeless design sneakers. Comfortable for all-day wear.", price: "$8/pair", img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" },
+                    { name: "Canvas Loafers", desc: "Easy slip-on loafers. Perfect for summer.", price: "$6/pair", img: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400" },
+                    { name: "Street Style Boots", desc: "Trendy boots for casual outings.", price: "$18/pair", img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400" },
+                    { name: "Slip-on Moccasins", desc: "Soft leather moccasins. Ultimate comfort.", price: "$12/pair", img: "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400" }
+                ]
+            },
+            formal: {
+                title: "Formal Shoes",
+                products: [
+                    { name: "Oxford Dress Shoes", desc: "Classic oxford shoes. Premium leather.", price: "$18/pair", img: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400" },
+                    { name: "Derby Shoes", desc: "Elegant derby for business. Italian style.", price: "$16/pair", img: "https://images.unsplash.com/photo-1613987876445-fcb353cd8e27?w=400" },
+                    { name: "Monk Strap", desc: "Modern monk strap shoes. Buckle closure.", price: "$20/pair", img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400" },
+                    { name: "Leather Brogues", desc: "Classic brogues with perforations.", price: "$15/pair", img: "https://images.unsplash.com/photo-1613987876445-fcb353cd8e27?w=400" }
+                ]
+            },
+            women: {
+                title: "Women's Shoes",
+                products: [
+                    { name: "Classic Flats", desc: "Elegant flats for office. Multiple colors.", price: "$7/pair", img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" },
+                    { name: "High Heels", desc: "Stiletto heels for formal occasions.", price: "$12/pair", img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" },
+                    { name: "Summer Sandals", desc: "Comfortable sandals for summer.", price: "$6/pair", img: "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400" },
+                    { name: "Ankle Boots", desc: "Trendy ankle boots for fall/winter.", price: "$14/pair", img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400" },
+                    { name: "Wedge Heels", desc: "Comfortable wedge sandals.", price: "$10/pair", img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" }
+                ]
+            }
+        };
 
-        (function() { emailjs.init("kvEuwT7TlqEEW3-lg"); })();
-
-        async function sendTelegramNotification(name, email, message) {
-            const text = `🔔 New Inquiry!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
-            try {
-                await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: text })
-                });
-            } catch (e) {}
+        function showPage(page) {
+            document.getElementById('page-home').style.display = page === 'home' ? 'block' : 'none';
+            document.getElementById('page-products').style.display = page === 'products' ? 'block' : 'none';
+            document.getElementById('page-contact').style.display = page === 'contact' ? 'block' : 'none';
+            window.scrollTo(0, 0);
         }
 
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        function showCategory(cat) {
+            const data = catalog[cat];
+            document.getElementById('category-title').innerText = data.title;
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = data.products.map((p, i) => `
+                <div class="product-card" onclick="showProduct('${cat}', ${i})">
+                    <div class="product-img"><img src="${p.img}" alt="${p.name}"></div>
+                    <div class="product-info">
+                        <h4>${p.name}</h4>
+                        <p>${p.price}</p>
+                    </div>
+                </div>
+            `).join('');
+            showPage('products');
+        }
+
+        function showProduct(cat, index) {
+            const p = catalog[cat].products[index];
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalDesc').innerText = p.desc;
+            document.getElementById('modalPrice').innerText = p.price;
+            document.getElementById('modalImg').src = p.img;
+            document.getElementById('productModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('show');
+        }
+
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        const TELEGRAM_BOT_TOKEN = '8620401253:AAExCOqmSksFLariIS_rhWG05Jnv9advt-M';
+        const TELEGRAM_CHAT_ID = '7753038386';
+        (function() { emailjs.init("kvEuwT7TlqEEW3-lg"); })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-
+            
             emailjs.send('service_95vle5r', 'template_4hfqm4q', { from_name: name, from_email: email, message: message })
                 .then(function() {
-                    sendTelegramNotification(name, email, message);
+                    fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: `🔔 New!\n${name}\n${email}\n${message}` })
+                    });
                     document.getElementById('successMessage').style.display = 'block';
                     document.getElementById('contactForm').reset();
                     setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
