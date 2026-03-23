@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiayu's Vision - Quality Shoes for Global Markets</title>
+    <meta name="description" content="Jiayu's Vision - Professional shoe manufacturer and exporter with competitive prices. Serving global markets.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        
+        /* Header */
+        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; z-index: 1000; }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
+        .logo span { color: #e74c3c; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #e74c3c; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8rem 2rem 4rem; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem; }
+        .btn { display: inline-block; padding: 1rem 2rem; background: #e74c3c; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: transform 0.3s; }
+        .btn:hover { transform: translateY(-3px); }
+        
+        /* Features */
+        .features { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .features h2 { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .feature-card { text-align: center; padding: 2rem; border-radius: 10px; background: #f8f9fa; }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .feature-card h3 { margin-bottom: 1rem; color: #2c3e50; }
+        
+        /* Products */
+        .products { padding: 4rem 2rem; background: #f8f9fa; }
+        .products h2 { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .product-image { height: 200px; background: linear-gradient(135deg, #ddd, #eee); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { margin-bottom: 0.5rem; }
+        .product-info p { color: #666; font-size: 0.9rem; }
+        .price { color: #e74c3c; font-size: 1.3rem; font-weight: bold; margin-top: 1rem; }
+        
+        /* About */
+        .about { padding: 4rem 2rem; max-width: 800px; margin: 0 auto; text-align: center; }
+        .about h2 { font-size: 2rem; margin-bottom: 2rem; }
+        .about p { font-size: 1.1rem; color: #666; line-height: 1.8; }
+        
+        /* Contact */
+        .contact { padding: 4rem 2rem; background: #2c3e50; color: white; text-align: center; }
+        .contact h2 { font-size: 2rem; margin-bottom: 2rem; }
+        .contact-info { font-size: 1.2rem; }
+        .contact-info p { margin: 1rem 0; }
+        .contact-info a { color: #e74c3c; text-decoration: none; }
+        
+        /* Footer */
+        footer { background: #1a252f; color: #7f8c8d; text-align: center; padding: 2rem; }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Jiayu's <span>Vision</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Quality Shoes for Global Markets</h1>
+        <p>Professional shoe manufacturer with competitive prices. Serving customers worldwide.</p>
+        <a href="#contact" class="btn">Get Quote</a>
+    </section>
+
+    <section class="features">
+        <h2>Why Choose Us</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Competitive Price</h3>
+                <p>Factory direct pricing, best value for your budget</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Quality First</h3>
+                <p>Strict quality control for every pair of shoes</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Shipping</h3>
+                <p>Fast delivery to Europe, USA, and worldwide</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>OEM/ODM</h3>
+                <p>Custom designs and private label services</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">👟</div>
+                <div class="product-info">
+                    <h3>Sports Shoes</h3>
+                    <p>Comfortable and durable sports footwear</p>
+                    <div class="price">From $8/pair</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👞</div>
+                <div class="product-info">
+                    <h3>Casual Shoes</h3>
+                    <p>Stylish everyday footwear</p>
+                    <div class="price">From $6/pair</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🥿</div>
+                <div class="product-info">
+                    <h3>Formal Shoes</h3>
+                    <p>Elegant shoes for business occasions</p>
+                    <div class="price">From $10/pair</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🩰</div>
+                <div class="product-info">
+                    <h3>Women's Flats</h3>
+                    <p>Comfortable and fashionable</p>
+                    <div class="price">From $5/pair</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Jiayu's Vision</h2>
+        <p>Jiayu's Vision is a professional shoe manufacturer and exporter based in China. We specialize in producing high-quality footwear for global markets, with a focus on competitive pricing and excellent customer service. Our products are exported to Europe, USA, and many other countries.</p>
+        <br>
+        <p>With years of experience in the footwear industry, we understand the importance of quality, price, and timely delivery. Let us be your trusted partner for quality shoes.</p>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p>📧 Email: sales@jiayuvision.com</p>
+            <p>📱 Telegram: @M606058</p>
+            <p>🌐 Website: www.jiayuvision.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Jiayu's Vision. All rights reserved.</p>
+    </footer>
+</body>
+</html>
