@@ -22,9 +22,21 @@
         .hero p { opacity: 0.7; font-size: 1.2rem; }
         .hero .hint { margin-top: 20px; opacity: 0.5; font-size: 0.9rem; }
         
+        /* Categories Page */
+        .categories-page { display: none; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .categories-page.active { display: block; }
+        .back-btn { display: inline-block; padding: 10px 20px; background: #000; color: #fff; border: none; cursor: pointer; margin-bottom: 30px; }
+        .categories { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .category-card { position: relative; cursor: pointer; border-radius: 10px; overflow: hidden; }
+        .category-card img { width: 100%; height: 250px; object-fit: cover; }
+        .category-card:hover { transform: scale(1.03); transition: 0.3s; }
+        .category-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #fff; padding: 20px; }
+        .category-overlay h3 { font-size: 1.3rem; }
+        .category-overlay p { opacity: 0.7; font-size: 0.9rem; }
+        
+        /* Gallery Page */
         .gallery-page { display: none; padding: 60px 20px; max-width: 1400px; margin: 0 auto; }
         .gallery-page.active { display: block; }
-        .back-btn { display: inline-block; padding: 10px 20px; background: #000; color: #fff; border: none; cursor: pointer; margin-bottom: 30px; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
         .gallery-item { aspect-ratio: 1; overflow: hidden; cursor: pointer; border-radius: 8px; }
         .gallery-item:hover { transform: scale(1.05); transition: 0.3s; }
@@ -35,7 +47,7 @@
         .lightbox.active { display: flex; align-items: center; justify-content: center; }
         .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; }
         .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
-        .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; cursor: pointer; padding: 20px; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; cursor: pointer; padding: 20px; }
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
         
@@ -59,34 +71,49 @@
         <div class="logo" onclick="showHome()">JIAYU'S VISION</div>
         <nav class="menu">
             <a href="#" onclick="showHome()">Home</a>
-            <a href="#" onclick="showGallery()">Products</a>
+            <a href="#" onclick="showCategories()">Products</a>
             <a href="#" onclick="showContact()">Contact</a>
         </nav>
     </header>
 
     <!-- Home Page -->
-    <section class="hero" onclick="showGallery()">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1600" alt="Hero" class="hero-img">
+    <section class="hero" onclick="showCategories()">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1600" alt="Fashion" class="hero-img">
         <div class="hero-overlay">
             <h1>FIND YOUR PERFECT MATCH</h1>
             <p>Premium Quality • Fast Global Shipping • Custom OEM/ODM</p>
-            <p class="hint">👆 Click image to view all products</p>
+            <p class="hint">👆 Click to explore our collections</p>
+        </div>
+    </section>
+
+    <!-- Categories Page -->
+    <section class="categories-page" id="categories-page">
+        <button class="back-btn" onclick="showHome()">← Back to Home</button>
+        <h2 style="margin-bottom:30px;font-weight:300;">Our Collections</h2>
+        <div class="categories">
+            <div class="category-card" onclick="showGallery('ASICS')">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600" alt="ASICS">
+                <div class="category-overlay">
+                    <h3>ASICS Collection</h3>
+                    <p>Sports & Running Shoes - 52 Styles</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Gallery Page -->
     <section class="gallery-page" id="gallery-page">
-        <button class="back-btn" onclick="showHome()">← Back to Home</button>
-        <h2 style="margin-bottom:30px;font-weight:300;">Our Products (52 Photos) - Click to enlarge</h2>
+        <button class="back-btn" onclick="showCategories()">← Back to Collections</button>
+        <h2 id="gallery-title" style="margin-bottom:30px;font-weight:300;">Products - Click to enlarge</h2>
         <div class="gallery" id="gallery"></div>
     </section>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">×</span>
-        <span class="lightbox-prev" onclick="prevImage()">‹</span>
+        <span class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</span>
         <img id="lightbox-img" src="" alt="">
-        <span class="lightbox-next" onclick="nextImage()">›</span>
+        <span class="lightbox-nav lightbox-next" onclick="nextImage()">›</span>
     </div>
 
     <!-- Contact Page -->
@@ -109,7 +136,6 @@
     </footer>
 
     <script>
-        // Load your 52 images from GitHub
         const imageBase = "https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/";
         let images = [];
         let currentIndex = 0;
@@ -123,26 +149,37 @@
         
         function showHome() {
             document.querySelector('.hero').style.display = 'block';
+            document.getElementById('categories-page').classList.remove('active');
             document.getElementById('gallery-page').classList.remove('active');
             document.getElementById('contact-page').classList.remove('active');
             window.scrollTo(0, 0);
         }
 
-        function showGallery() {
+        function showCategories() {
             document.querySelector('.hero').style.display = 'none';
+            document.getElementById('categories-page').classList.add('active');
+            document.getElementById('gallery-page').classList.remove('active');
+            document.getElementById('contact-page').classList.remove('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showGallery(category) {
+            document.querySelector('.hero').style.display = 'none';
+            document.getElementById('categories-page').classList.remove('active');
             document.getElementById('gallery-page').classList.add('active');
             document.getElementById('contact-page').classList.remove('active');
+            document.getElementById('gallery-title').innerText = category + ' Collection - ' + images.length + ' Photos - Click to enlarge';
             window.scrollTo(0, 0);
         }
 
         function showContact() {
             document.querySelector('.hero').style.display = 'none';
+            document.getElementById('categories-page').classList.remove('active');
             document.getElementById('gallery-page').classList.remove('active');
             document.getElementById('contact-page').classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        // Lightbox functions
         function openLightbox(index) {
             currentIndex = index;
             document.getElementById('lightbox-img').src = images[index];
@@ -163,7 +200,6 @@
             document.getElementById('lightbox-img').src = images[currentIndex];
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (!document.getElementById('lightbox').classList.contains('active')) return;
             if (e.key === 'ArrowLeft') prevImage();
