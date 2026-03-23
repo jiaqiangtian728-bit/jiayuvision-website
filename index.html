@@ -30,6 +30,15 @@
         .gallery-item:hover { transform: scale(1.05); transition: 0.3s; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         
+        /* Lightbox */
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; }
+        .lightbox.active { display: flex; align-items: center; justify-content: center; }
+        .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
+        .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; cursor: pointer; padding: 20px; }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        
         .contact-page { display: none; background: #f9f9f9; padding: 60px 20px; text-align: center; }
         .contact-page.active { display: block; }
         .contact h2 { margin-bottom: 30px; font-weight: 300; }
@@ -68,9 +77,17 @@
     <!-- Gallery Page -->
     <section class="gallery-page" id="gallery-page">
         <button class="back-btn" onclick="showHome()">← Back to Home</button>
-        <h2 style="margin-bottom:30px;font-weight:300;">Our Products (52 Photos)</h2>
+        <h2 style="margin-bottom:30px;font-weight:300;">Our Products (52 Photos) - Click to enlarge</h2>
         <div class="gallery" id="gallery"></div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <span class="lightbox-prev" onclick="prevImage()">‹</span>
+        <img id="lightbox-img" src="" alt="">
+        <span class="lightbox-next" onclick="nextImage()">›</span>
+    </div>
 
     <!-- Contact Page -->
     <section class="contact-page" id="contact-page">
@@ -94,6 +111,15 @@
     <script>
         // Load your 52 images from GitHub
         const imageBase = "https://raw.githubusercontent.com/jiaqiangtian728-bit/jiayuvision-website/main/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/";
+        let images = [];
+        let currentIndex = 0;
+        
+        // Generate image URLs
+        for (let i = 1; i <= 51; i++) {
+            images.push(imageBase + "small%20(" + i + ").jpg");
+        }
+        images.push(imageBase + "small.jpg");
+        images.push(imageBase + "medium.jpg");
         
         function showHome() {
             document.querySelector('.hero').style.display = 'block';
@@ -116,15 +142,40 @@
             window.scrollTo(0, 0);
         }
 
-        // Load all 52 images
-        const gallery = document.getElementById('gallery');
-        
-        // Generate image URLs (1-51 + small + medium)
-        for (let i = 1; i <= 51; i++) {
-            gallery.innerHTML += `<div class="gallery-item"><img src="${imageBase}small%20(${i}).jpg" alt="Product ${i}"></div>`;
+        // Lightbox functions
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById('lightbox-img').src = images[index];
+            document.getElementById('lightbox').classList.add('active');
         }
-        gallery.innerHTML += `<div class="gallery-item"><img src="${imageBase}small.jpg" alt="Product"></div>`;
-        gallery.innerHTML += `<div class="gallery-item"><img src="${imageBase}medium.jpg" alt="Product"></div>`;
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Render gallery
+        const gallery = document.getElementById('gallery');
+        images.forEach((img, index) => {
+            gallery.innerHTML += `<div class="gallery-item" onclick="openLightbox(${index})"><img src="${img}" alt="Product ${index+1}"></div>`;
+        });
 
         // Contact form
         const TELEGRAM_BOT_TOKEN = '8620401253:AAExCOqmSksFLariIS_rhWG05Jnv9advt-M';
