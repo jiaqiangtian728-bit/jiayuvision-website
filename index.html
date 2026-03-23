@@ -190,21 +190,45 @@
     </footer>
 
     <script>
+        const TELEGRAM_BOT_TOKEN = '8620401253:AAExCOqmSksFLariIS_rhWG05Jnv9advt-M';
+        const TELEGRAM_CHAT_ID = '7753038386';
+
         (function() {
             emailjs.init("kvEuwT7TlqEEW3-lg");
         })();
 
+        async function sendTelegramNotification(name, email, message) {
+            const text = `🔔 New Inquiry from Website!\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`;
+            try {
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: text
+                    })
+                });
+            } catch (e) {
+                console.log('Telegram notification sent');
+            }
+        }
+
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
             
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
             const templateParams = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                message: document.getElementById('message').value
+                from_name: name,
+                from_email: email,
+                message: message
             };
 
             emailjs.send('service_95vle5r', 'template_4hfqm4q', templateParams)
                 .then(function() {
+                    sendTelegramNotification(name, email, message);
                     document.getElementById('successMessage').style.display = 'block';
                     document.getElementById('contactForm').reset();
                     setTimeout(function() {
